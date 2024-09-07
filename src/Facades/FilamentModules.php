@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolsam\Modules\Facades;
+namespace PlanA23\Modules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

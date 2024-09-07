@@ -1,19 +1,19 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
-use Coolsam\Modules\Concerns\GeneratesModularFiles;
+use PlanA23\Modules\Concerns\GeneratesModularFiles;
 use Illuminate\Console\GeneratorCommand;
 
 class ModuleMakeFilamentPluginCommand extends GeneratorCommand
 {
     use GeneratesModularFiles;
 
-    protected $name = 'module:make:filament-plugin';
+    protected $name = 'module:make:plana-plugin';
 
-    protected $description = 'Create a new Filament Plugin class in the module';
+    protected $description = 'Create a new Plan A Plugin class in the module';
 
-    protected $type = 'Filament Plugin';
+    protected $type = 'Plan A Plugin';
 
     protected function getRelativeNamespace(): string
     {

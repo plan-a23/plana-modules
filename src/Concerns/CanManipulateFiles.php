@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Concerns;
+namespace PlanA23\Modules\Concerns;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Nwidart\Modules\Module;

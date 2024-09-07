@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
 use Filament\Support\Commands\Concerns\CanManipulateFiles;
 use Illuminate\Console\Command;
@@ -22,14 +22,14 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
      *
      * @var string
      */
-    protected $name = 'module:filament:install';
+    protected $name = 'module:plana:install';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Add Filament Support to a Module';
+    protected $description = 'Add Plan A Support to a Module';
 
     private bool $cluster;
 
@@ -42,7 +42,7 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
     {
         $this->moduleName = $this->argument('module');
         if (! $this->option('cluster')) {
-            $this->cluster = confirm('Do you want to organize your code into filament clusters?', true);
+            $this->cluster = confirm('Do you want to organize your code into Plan A clusters?', true);
         }
         // Ensure the Filament directories exist
         $this->ensureFilamentDirectoriesExist();
@@ -57,7 +57,7 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
     protected function getArguments(): array
     {
         return [
-            ['module', InputArgument::REQUIRED, 'The name of the module in which to install filament support'],
+            ['module', InputArgument::REQUIRED, 'The name of the module in which to install Plan A support'],
         ];
     }
 
@@ -104,7 +104,6 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
             if (! is_dir($dir = $this->getModule()->appPath('Filament/Clusters'))) {
                 $this->makeDirectory($dir);
             }
-
         } else {
             if (! is_dir($dir = $this->getModule()->appPath('Filament/Pages'))) {
                 $this->makeDirectory($dir);
@@ -131,7 +130,7 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
     protected function createDefaultFilamentPlugin(): void
     {
         $module = $this->getModule();
-        $this->call('module:make:filament-plugin', [
+        $this->call('module:make:plana-plugin', [
             'name' => $module->getStudlyName() . 'Plugin',
             'module' => $module->getStudlyName(),
         ]);
@@ -140,7 +139,7 @@ class ModuleFilamentInstallCommand extends Command implements \Illuminate\Contra
     protected function createDefaultFilamentCluster(): void
     {
         $module = $this->getModule();
-        $this->call('module:make:filament-cluster', [
+        $this->call('module:make:plana-cluster', [
             'name' => $module->getStudlyName(),
             'module' => $module->getStudlyName(),
         ]);

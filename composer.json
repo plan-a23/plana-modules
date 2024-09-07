@@ -1,23 +1,28 @@
 {
-  "name": "coolsam/modules",
-  "description": "Organize your Filament Code into modules using nwidart/laravel-modules",
+  "name": "plan-a23/modules",
+  "description": "Organize your Plan A Code into modules using nwidart/laravel-modules",
   "keywords": [
-    "coolsam",
+    "Plan A",
     "laravel",
-    "FilamentModules",
-    "filament"
+    "Plan A Modules",
+    "Plan A"
   ],
-  "homepage": "https://github.com/savannabits/filament-modules",
+  "homepage": "https://github.com/plan-a23/plana-modules",
   "support": {
-    "issues": "https://github.com/savannabits/filament-modules/issues",
-    "source": "https://github.com/savannabits/filament-modules"
+    "issues": "https://github.com/plan-a23/plana-modules/issues",
+    "source": "https://github.com/plan-a23/plana-modules"
   },
   "license": "MIT",
   "authors": [
     {
-      "name": "Sam Maosa",
-      "email": "maosa.sam@gmail.com",
+      "name": "Ahmed Eid",
+      "email": "contact@plan-a.eu.org",
       "role": "Developer"
+    },
+    {
+      "name": "Plan A",
+      "email": "contact@plan-a.eu.org",
+      "role": "Company"
     }
   ],
   "require": {
@@ -41,13 +46,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Coolsam\\Modules\\": "src/",
-      "Coolsam\\Modules\\Database\\Factories\\": "database/factories/"
+      "Plan-a23\\Modules\\": "src/",
+      "Plan-a23\\Modules\\Database\\Factories\\": "database/factories/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Coolsam\\Modules\\Tests\\": "tests/"
+      "Plan-a23\\Modules\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -84,10 +89,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Coolsam\\Modules\\ModulesServiceProvider"
+        "Plan-a23\\Modules\\ModulesServiceProvider"
       ],
       "aliases": {
-        "FilamentModules": "FilamentModules"
+        "PlanaModules": "PlanaModules"
       }
     }
   },

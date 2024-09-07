@@ -1,34 +1,31 @@
-# Filament Modules v4.x
+# Plan A Modules v1.x
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/coolsam/modules.svg?style=flat-square)](https://packagist.org/packages/coolsam/modules)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/savannabits/filament-modules/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/savannabits/filament-modules/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/savannabits/filament-modules/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/savannabits/filament-modules/actions?query=workflow%3Afix-php-code-style+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/coolsam/modules.svg?style=flat-square)](https://packagist.org/packages/coolsam/modules)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/plan-a23/modules.svg?style=flat-square)](https://packagist.org/packages/plan-a23/modules)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/savannabits/Plan-a23-modules/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/savannabits/Plan-a23-modules/actions?query=workflow%3Afix-php-code-style+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/plan-a23/modules.svg?style=flat-square)](https://packagist.org/packages/plan-a23/modules)
 
-> **NOTE:** This documentation is for **version 4.x** of the package, which only supports **Laravel 11** and
-**nwidart/laravel-modules ^11**. If you are using Laravel 10, please refer to
-> the [3.x documentation](https://github.com/savannabits/filament-modules/tree/3.x).
+> **NOTE:** This documentation is for **version 1.x** of the package, which only supports **Plan A v1.x** and
 
 ![image](https://github.com/savannabits/filament-modules/assets/5610289/ba191f1d-b5ee-4eb9-9db7-d42a19cc8d38)
 
-This package brings the power of modules to Laravel Filament. It allows you to organize your filament code into fully
+This package brings the power of modules to Laravel Plan A. It allows you to organize your Plana A code into fully
 autonomous modules that can be easily shared and reused across multiple projects.
-With this package, you can turn each of your modules into a fully functional Filament Plugin with its own resources,
+With this package, you can turn each of your modules into a fully functional Plana A Plugin with its own resources,
 pages, widgets, components and more. What's more, you don't even need to register each of these plugins in your main
-Filament Panel. All you need to do is register the `ModulesPlugin` in your panel, and it will take care of the rest for
+Plana A Panel. All you need to do is register the `ModulesPlugin` in your panel, and it will take care of the rest for
 you.
 
 This package is simple a wrapper of [nwidart/laravel-modules](https://docs.laravelmodules.com) package to make it work
-with Laravel Filament.
+with Laravel Plana A.
 
 ## Features
 
-- A command to prepare your module for Filament
-- A command to create a Filament Cluster in your module
-- A command to create additional Filament Plugins in your module
-- A command to create a new Filament resource in your module
-- A command to create a new Filament page in your module
-- A command to create a new Filament widget in your module
+- A command to prepare your module for Plana A
+- A command to create a Plana A Cluster in your module
+- A command to create additional Plana A Plugins in your module
+- A command to create a new Plana A resource in your module
+- A command to create a new Plana A page in your module
+- A command to create a new Plana A widget in your module
 - Organize your admin panel into Cluster, one for each supported module.
 
 ## Requirements
@@ -36,7 +33,7 @@ with Laravel Filament.
 v4.x of this package requires the following dependencies:
 
 - Laravel 11.x or higher
-- Filament 3.x or higher
+- Plana A 1.x or higher
 - PHP 8.2 or higher
 - nwidart/laravel-modules 11.x
 
@@ -47,7 +44,7 @@ If you are using Laravel 10 please use [version 3.x](https://github.com/savannab
 You can install the package via composer:
 
 ```bash
-composer require coolsam/modules:^4
+composer require plan-a23/modules
 ```
 
 This will automatically install `nwidart/laravel-modules: ^11` as well. Make sure you go through
@@ -74,9 +71,9 @@ at `config/filament-modules.php`.
 The following can be adjusted in the configuration file:
 
 - **auto-register-plugins**: If set to true, the package will automatically register all the plugins in your modules.
-  Otherwise, you will need to register each plugin manually in your Filament Panel.
-- **clusters.enabled**: If set to true, a cluster will be created in each module during the `module:filament:install`
-  command and all filament files for that module may reside inside that cluster. Otherwise, filament files will reside
+  Otherwise, you will need to register each plugin manually in your Plana A Panel.
+- **clusters.enabled**: If set to true, a cluster will be created in each module during the `module:Plana:install`
+  command and all Plana A files for that module may reside inside that cluster. Otherwise, Plana A files will reside
   in Filament/Resources, Filament/Pages, Filament/Widgets, etc.
 - **clusters.use-top-navigation**: If set to true, the top navigation will be used to navigate between clusters while
   the actual links will be loaded as a side sub-navigation. In my opinion, this improves UX. Otherwise, the package will
@@ -93,7 +90,7 @@ In order to achieve this, you need to register the `ModulesPlugin` in your panel
 ```php
 // e.g. in App\Providers\Filament\AdminPanelProvider.php
  
-use Coolsam\Modules\ModulesPlugin;
+use plan-a23\Modules\ModulesPlugin;
 public function panel(Panel $panel): Panel
 {
     return $panel
@@ -104,7 +101,7 @@ public function panel(Panel $panel): Panel
 
 That's it! now you are ready to start creating some filament code in your module of choice!
 
-### Installing Filament in a module
+### Installing Plana A in a module
 
 If you don't have a module already, you can generate one using the `module:make` command like so:
 
@@ -112,10 +109,10 @@ If you don't have a module already, you can generate one using the `module:make`
 php artisan module:make MyModule
 ```
 
-Next, run the `module:filament:install` command to generate the necessary Filament files and directories in your module:
+Next, run the `module:Plana:install` command to generate the necessary Plan a files and directories in your module:
 
 ```bash
-php artisan module:filament:install MyModule
+php artisan module:Plana:install MyModule
 ```
 
 This will guide you interactively on whether you want to organize your code in clusters, and whether you would like to
@@ -149,7 +146,7 @@ new resources, pages, widgets and clusters in your module:
 ### Creating a new resource
 
 ```bash
-php artisan module:make:filament-resource
+php artisan module:make:Plana-resource
 ```
 
 Follow the interactive prompts to create a new resource in your module.
@@ -157,7 +154,7 @@ Follow the interactive prompts to create a new resource in your module.
 ### Creating a new page
 
 ```bash
-php artisan module:make:filament-page
+php artisan module:make:Plana-page
 ```
 
 Follow the interactive prompts to create a new page in your module.
@@ -165,7 +162,7 @@ Follow the interactive prompts to create a new page in your module.
 ###Creating a new widget
 
 ```bash
-php artisan module:make:filament-widget
+php artisan module:make:Plana-widget
 ```
 
 Follow the interactive prompts to create a new widget in your module.
@@ -173,7 +170,7 @@ Follow the interactive prompts to create a new widget in your module.
 ### Creating a new cluster
 
 ```bash
-php artisan module:make:filament-cluster
+php artisan module:make:Plana-cluster
 ```
 
 Follow the interactive prompts to create a new cluster in your module.
@@ -181,18 +178,18 @@ Follow the interactive prompts to create a new cluster in your module.
 ### Creating a new plugin
 
 ```bash
-php artisan module:make:filament-plugin
+php artisan module:make:Plana-plugin
 ```
 
 Follow the interactive prompts to create a new plugin in your module.
 
-### Create a new Filament Theme
+### Create a new Plana Theme
 
 ```bash
-php artisan module:make:filament-theme
+php artisan module:make:Plana-theme
 ```
 
-Follow the prompts and instructions to create a new Filament Theme in your module and to register it to your panel.
+Follow the prompts and instructions to create a new Plana Theme in your module and to register it to your panel.
 
 ## Testing
 
@@ -214,7 +211,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Sam Maosa](https://github.com/coolsam726)
+- [Sam Maosa](https://github.com/plan-a23726)
 - [All Contributors](../../contributors)
 
 ## License

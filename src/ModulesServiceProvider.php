@@ -1,9 +1,9 @@
 <?php
 
-namespace Coolsam\Modules;
+namespace PlanA23\Modules;
 
-use Coolsam\Modules\Facades\FilamentModules;
-use Coolsam\Modules\Testing\TestsModules;
+use PlanA23\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Testing\TestsModules;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;

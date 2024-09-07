@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Filament\Clusters\Cluster;
 use Filament\Commands\MakePageCommand;
 use Filament\Facades\Filament;
@@ -17,9 +17,9 @@ use function Laravel\Prompts\text;
 
 class ModuleMakeFilamentPageCommand extends MakePageCommand
 {
-    protected $signature = 'module:make:filament-page {name?} {module?} {--R|resource=} {--T|type=} {--panel=} {--F|force}';
+    protected $signature = 'module:make:plana-page {name?} {module?} {--R|resource=} {--T|type=} {--panel=} {--F|force}';
 
-    protected $description = 'Create a new Filament page class in a module';
+    protected $description = 'Create a new plan A page class in a module';
 
     public function handle(): int
     {
@@ -28,11 +28,11 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
         $module = FilamentModules::getModule($moduleStudlyName);
         $page = (string) str(
             $this->argument('name') ??
-            text(
-                label: 'What is the page name?',
-                placeholder: 'EditSettings',
-                required: true,
-            ),
+                text(
+                    label: 'What is the page name?',
+                    placeholder: 'EditSettings',
+                    required: true,
+                ),
         )
             ->trim('/')
             ->trim('\\')
@@ -60,7 +60,7 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
             $panel = (count($panels) > 1) ? $panels[select(
                 label: 'Which panel would you like to create this in?',
                 options: array_map(
-                    fn (Panel $panel): string => $panel->getId(),
+                    fn(Panel $panel): string => $panel->getId(),
                     $panels,
                 ),
                 default: Filament::getDefaultPanel()->getId()
@@ -70,9 +70,9 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
         $resourceInput = $this->option('resource') ?? suggest(
             label: 'Which resource would you like to create this in?',
             options: collect($panel->getResources())
-                ->filter(fn (string $namespace): bool => str($namespace)->contains($module->appNamespace()) && str($namespace)->contains('\\Resources\\'))
+                ->filter(fn(string $namespace): bool => str($namespace)->contains($module->appNamespace()) && str($namespace)->contains('\\Resources\\'))
                 ->map(
-                    fn (string $namespace): string => (string) str($namespace)
+                    fn(string $namespace): string => (string) str($namespace)
                         ->afterLast('\\Resources\\')
                         ->beforeLast('Resource')
                 )
@@ -189,32 +189,28 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
         }
 
         if (empty($resource)) {
-            $pageDirectories = collect($panel->getPageDirectories())->filter(fn (string $directory): bool => str($directory)->contains($module->appPath()))->values()->all();
-            $pageNamespaces = collect($panel->getPageNamespaces())->filter(fn (string $namespace): bool => str($namespace)->contains($module->appNamespace()))->values()->all();
+            $pageDirectories = collect($panel->getPageDirectories())->filter(fn(string $directory): bool => str($directory)->contains($module->appPath()))->values()->all();
+            $pageNamespaces = collect($panel->getPageNamespaces())->filter(fn(string $namespace): bool => str($namespace)->contains($module->appNamespace()))->values()->all();
 
             $namespace = (count($pageNamespaces) > 1) ?
                 select(
                     label: 'Which namespace would you like to create this in?',
                     options: $pageNamespaces,
                     required: true
-                ) :
-                (Arr::first($pageNamespaces) ?? $module->appNamespace('Filament\\Pages'));
+                ) : (Arr::first($pageNamespaces) ?? $module->appNamespace('Filament\\Pages'));
             $path = (count($pageDirectories) > 1) ?
-                $pageDirectories[array_search($namespace, $pageNamespaces)] :
-                (Arr::first($pageDirectories) ?? $module->appPath('Filament/Pages/'));
+                $pageDirectories[array_search($namespace, $pageNamespaces)] : (Arr::first($pageDirectories) ?? $module->appPath('Filament/Pages/'));
         } else {
-            $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn (string $directory): bool => str($directory)->contains($module->appPath()))->values()->all();
-            $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn (string $namespace): bool => str($namespace)->contains($module->appNamespace()))->values()->all();
+            $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn(string $directory): bool => str($directory)->contains($module->appPath()))->values()->all();
+            $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn(string $namespace): bool => str($namespace)->contains($module->appNamespace()))->values()->all();
 
             $resourceNamespace = (count($resourceNamespaces) > 1) ?
                 select(
                     label: 'Which namespace would you like to create this in?',
                     options: $resourceNamespaces
-                ) :
-                (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
+                ) : (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
             $resourcePath = (count($resourceDirectories) > 1) ?
-                $resourceDirectories[array_search($resourceNamespace, $resourceNamespaces)] :
-                (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources'));
+                $resourceDirectories[array_search($resourceNamespace, $resourceNamespaces)] : (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources'));
         }
 
         $view = str(str($page)
@@ -225,7 +221,7 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
             ->replace('\\', '/')
             ->ltrim('/')
             ->explode('/')
-            ->map(fn ($segment) => Str::lower(Str::kebab($segment)))
+            ->map(fn($segment) => Str::lower(Str::kebab($segment)))
             ->implode('.'))->prepend($module->getLowerName() . '::');
 
         $path = (string) str($page)
@@ -310,7 +306,7 @@ class ModuleMakeFilamentPageCommand extends MakePageCommand
             $this->copyStubToApp('PageView', $viewPath);
         }
 
-        $this->components->info("Filament page [{$path}] created successfully.");
+        $this->components->info("Plan A page [{$path}] created successfully.");
 
         if ($resource !== null) {
             $this->components->info("Make sure to register the page in `{$resourceClass}::getPages()`.");

@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Filament\Commands\MakeThemeCommand;
 use Filament\Panel;
 use Nwidart\Modules\Module;
@@ -11,9 +11,9 @@ use function Laravel\Prompts\text;
 
 class ModuleMakeFilamentThemeCommand extends MakeThemeCommand
 {
-    protected $signature = 'module:make:filament-theme {module?} {--pm=} {--F|force}';
+    protected $signature = 'module:make:plana-theme {module?} {--pm=} {--F|force}';
 
-    protected $description = 'Create a new Filament theme in a module';
+    protected $description = 'Create a new Plan A theme in a module';
 
     public function handle(): int
     {
@@ -88,7 +88,7 @@ class ModuleMakeFilamentThemeCommand extends MakeThemeCommand
         if (! file_exists($postcssConfigPath)) {
             $this->copyStubToApp('filament-theme-postcss', $postcssConfigPath);
 
-            $this->components->info('Filament theme [postcss.config.js] created successfully.');
+            $this->components->info('Plan A theme [postcss.config.js] created successfully.');
         }
 
         $this->components->warn('Action is required to complete the theme setup:');

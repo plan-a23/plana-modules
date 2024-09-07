@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Concerns;
+namespace PlanA23\Modules\Concerns;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Illuminate\Support\Str;
 use Nwidart\Modules\Module;
 use Symfony\Component\Console\Input\InputArgument;
@@ -51,7 +51,7 @@ trait GeneratesModularFiles
         $modelPath = $this->getModule()->appPath('Models');
 
         return collect(Finder::create()->files()->depth(0)->in($modelPath))
-            ->map(fn ($file) => $file->getBasename('.php'))
+            ->map(fn($file) => $file->getBasename('.php'))
             ->sort()
             ->values()
             ->all();

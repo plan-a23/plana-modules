@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) coolsam <maosa.sam@gmail.com>
+Copyright (c) Plan A <contact@plan-a.eu.org>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolsam\Modules;
+namespace PlanA23\Modules;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Traits\Macroable;
@@ -29,7 +29,7 @@ class Modules
             ->replace('\\\\', '\\')
             ->rtrim('.php')
             ->explode(DIRECTORY_SEPARATOR)
-            ->map(fn ($piece) => str($piece)->studly()->toString())
+            ->map(fn($piece) => str($piece)->studly()->toString())
             ->implode('\\');
     }
 

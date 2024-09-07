@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Filament\Facades\Filament;
 use Filament\Panel;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use function Laravel\Prompts\text;
 
 class ModuleMakeFilamentWidgetCommand extends MakeWidgetCommand
 {
-    protected $signature = 'module:make:filament-widget {name?} {module?} {--R|resource=} {--C|chart} {--T|table} {--S|stats-overview} {--panel=} {--F|force}';
+    protected $signature = 'module:make:plana-widget {name?} {module?} {--R|resource=} {--C|chart} {--T|table} {--S|stats-overview} {--panel=} {--F|force}';
 
     public function handle(): int
     {
@@ -91,7 +91,7 @@ class ModuleMakeFilamentWidgetCommand extends MakeWidgetCommand
                     label: 'Where would you like to create this?',
                     options: array_unique([
                         ...array_map(
-                            fn (Panel $panel): string => "The [{$panel->getId()}] panel",
+                            fn(Panel $panel): string => "The [{$panel->getId()}] panel",
                             $panels,
                         ),
                         $namespace => "[{$namespace}] alongside other Livewire components",
@@ -109,31 +109,27 @@ class ModuleMakeFilamentWidgetCommand extends MakeWidgetCommand
             $namespace = $module->appNamespace('Livewire');
             $path = $module->appPath((string) str($namespace)->after('App\\')->replace('\\', '/'));
         } elseif ($resource === null) {
-            $widgetDirectories = collect($panel->getWidgetDirectories())->filter(fn ($dir) => str($dir)->contains($module->appPath()))->values()->all();
-            $widgetNamespaces = collect($panel->getWidgetNamespaces())->filter(fn ($dir) => str($dir)->contains($module->appNamespace()))->values()->all();
+            $widgetDirectories = collect($panel->getWidgetDirectories())->filter(fn($dir) => str($dir)->contains($module->appPath()))->values()->all();
+            $widgetNamespaces = collect($panel->getWidgetNamespaces())->filter(fn($dir) => str($dir)->contains($module->appNamespace()))->values()->all();
 
             $namespace = (count($widgetNamespaces) > 1) ?
                 select(
                     label: 'Which namespace would you like to create this in?',
                     options: $widgetNamespaces,
-                ) :
-                (Arr::first($widgetNamespaces) ?? $module->appNamespace('Filament\\Widgets'));
+                ) : (Arr::first($widgetNamespaces) ?? $module->appNamespace('Filament\\Widgets'));
             $path = (count($widgetDirectories) > 1) ?
-                $widgetDirectories[array_search($namespace, $widgetNamespaces)] :
-                (Arr::first($widgetDirectories) ?? $module->appPath('Filament/Widgets/'));
+                $widgetDirectories[array_search($namespace, $widgetNamespaces)] : (Arr::first($widgetDirectories) ?? $module->appPath('Filament/Widgets/'));
         } else {
-            $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn ($dir) => str($dir)->contains($module->appPath()))->values()->all();
-            $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn ($dir) => str($dir)->contains($module->appNamespace()))->values()->all();
+            $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn($dir) => str($dir)->contains($module->appPath()))->values()->all();
+            $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn($dir) => str($dir)->contains($module->appNamespace()))->values()->all();
 
             $resourceNamespace = (count($resourceNamespaces) > 1) ?
                 select(
                     label: 'Which namespace would you like to create this in?',
                     options: $resourceNamespaces,
-                ) :
-                (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
+                ) : (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
             $resourcePath = (count($resourceDirectories) > 1) ?
-                $resourceDirectories[array_search($resourceNamespace, $resourceNamespaces)] :
-                (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources/'));
+                $resourceDirectories[array_search($resourceNamespace, $resourceNamespaces)] : (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources/'));
         }
 
         $view = str(str($widget)->prepend(
@@ -142,7 +138,7 @@ class ModuleMakeFilamentWidgetCommand extends MakeWidgetCommand
         )
             ->replace('\\', '/')
             ->explode('/')
-            ->map(fn ($segment) => Str::lower(Str::kebab($segment)))
+            ->map(fn($segment) => Str::lower(Str::kebab($segment)))
             ->implode('.'))->prepend($module->getLowerName() . '::');
 
         $path = (string) str($widget)
@@ -216,7 +212,7 @@ class ModuleMakeFilamentWidgetCommand extends MakeWidgetCommand
             $this->copyStubToApp('WidgetView', $viewPath);
         }
 
-        $this->components->info("Filament widget [{$path}] created successfully.");
+        $this->components->info("Plan A widget [{$path}] created successfully.");
 
         if ($resource !== null) {
             $this->components->info("Make sure to register the widget in `{$resourceClass}::getWidgets()`, and then again in `getHeaderWidgets()` or `getFooterWidgets()` of any `{$resourceClass}` page.");

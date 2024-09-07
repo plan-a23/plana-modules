@@ -1,8 +1,8 @@
 <?php
 
-namespace Coolsam\Modules\Commands;
+namespace PlanA23\Modules\Commands;
 
-use Coolsam\Modules\Facades\FilamentModules;
+use PlanA23\Modules\Facades\FilamentModules;
 use Filament\Clusters\Cluster;
 use Filament\Facades\Filament;
 use Filament\Forms\Commands\Concerns\CanGenerateForms;
@@ -25,9 +25,9 @@ class ModuleMakeFilamentResourceCommand extends Command
     use CanManipulateFiles;
     use CanReadModelSchemas;
 
-    protected $signature = 'module:make:filament-resource {name?} {module?} {--model-namespace=} {--soft-deletes} {--view} {--G|generate} {--S|simple} {--panel=} {--F|force}';
+    protected $signature = 'module:make:plana-resource {name?} {module?} {--model-namespace=} {--soft-deletes} {--view} {--G|generate} {--S|simple} {--panel=} {--F|force}';
 
-    protected $description = 'Create a new Filament resource in a module';
+    protected $description = 'Create a new Plan A resource in a module';
 
     public function handle(): int
     {
@@ -75,25 +75,23 @@ class ModuleMakeFilamentResourceCommand extends Command
             $panel = (count($panels) > 1) ? $panels[select(
                 label: 'Which panel would you like to create this in?',
                 options: array_map(
-                    fn (Panel $panel): string => $panel->getId(),
+                    fn(Panel $panel): string => $panel->getId(),
                     $panels,
                 ),
                 default: Filament::getDefaultPanel()->getId()
             )] : Arr::first($panels);
         }
 
-        $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn ($directory) => str($directory)->contains($module->appPath()))->values()->toArray();
-        $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn ($namespace) => str($namespace)->contains($module->appNamespace()))->values()->toArray();
+        $resourceDirectories = collect($panel->getResourceDirectories())->filter(fn($directory) => str($directory)->contains($module->appPath()))->values()->toArray();
+        $resourceNamespaces = collect($panel->getResourceNamespaces())->filter(fn($namespace) => str($namespace)->contains($module->appNamespace()))->values()->toArray();
 
         $namespace = (count($resourceNamespaces) > 1) ?
             select(
                 label: 'Which namespace would you like to create this in?',
                 options: $resourceNamespaces
-            ) :
-            (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
+            ) : (Arr::first($resourceNamespaces) ?? $module->appNamespace('Filament\\Resources'));
         $path = (count($resourceDirectories) > 1) ?
-            $resourceDirectories[array_search($namespace, $resourceNamespaces)] :
-            (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources/'));
+            $resourceDirectories[array_search($namespace, $resourceNamespaces)] : (Arr::first($resourceDirectories) ?? $module->appPath('Filament/Resources/'));
 
         $resource = "{$model}Resource";
         $resourceClass = "{$modelClass}Resource";
@@ -293,7 +291,7 @@ class ModuleMakeFilamentResourceCommand extends Command
             ]);
         }
 
-        $this->components->info("Filament resource [{$resourcePath}] created successfully.");
+        $this->components->info("Plan A resource [{$resourcePath}] created successfully.");
 
         return static::SUCCESS;
     }

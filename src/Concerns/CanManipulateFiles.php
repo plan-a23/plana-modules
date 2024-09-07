@@ -1,8 +1,8 @@
 <?php
 
-namespace PlanA23\Modules\Concerns;
+namespace Plana23\Modules\Concerns;
 
-use PlanA23\Modules\Facades\FilamentModules;
+use Plana23\Modules\Facades\FilamentModules;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Nwidart\Modules\Module;

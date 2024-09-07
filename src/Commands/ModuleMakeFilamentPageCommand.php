@@ -1,8 +1,8 @@
 <?php
 
-namespace PlanA23\Modules\Commands;
+namespace Plana23\Modules\Commands;
 
-use PlanA23\Modules\Facades\FilamentModules;
+use Plana23\Modules\Facades\FilamentModules;
 use Filament\Clusters\Cluster;
 use Filament\Commands\MakePageCommand;
 use Filament\Facades\Filament;

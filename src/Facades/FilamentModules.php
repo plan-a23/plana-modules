@@ -1,6 +1,6 @@
 <?php
 
-namespace PlanA23\Modules\Facades;
+namespace Plana23\Modules\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

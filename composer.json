@@ -46,13 +46,13 @@
   },
   "autoload": {
     "psr-4": {
-      "PlanA23\\Modules\\": "src/",
-      "PlanA23\\Modules\\Database\\Factories\\": "database/factories/"
+      "Plana23\\Modules\\": "src/",
+      "Plana23\\Modules\\Database\\Factories\\": "database/factories/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PlanA23\\Modules\\Tests\\": "tests/"
+      "Plana23\\Modules\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -89,7 +89,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "PlanA23\\Modules\\ModulesServiceProvider"
+        "Plana23\\Modules\\ModulesServiceProvider"
       ],
       "aliases": {
         "PlanaModules": "PlanaModules"

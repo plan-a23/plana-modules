@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolsam\Modules\Concerns;
+namespace Plana23\Modules\Concerns;
 
 use Filament\Panel;
 use Nwidart\Modules\Facades\Module;

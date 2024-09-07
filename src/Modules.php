@@ -1,6 +1,6 @@
 <?php
 
-namespace PlanA23\Modules;
+namespace Plana23\Modules;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Traits\Macroable;

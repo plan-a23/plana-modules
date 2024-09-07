@@ -1,6 +1,6 @@
 <?php
 
-namespace PlanA23\Modules\Commands;
+namespace Plana23\Modules\Commands;
 
 use Filament\Support\Commands\Concerns\CanManipulateFiles;
 use Illuminate\Console\Command;

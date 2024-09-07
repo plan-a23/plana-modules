@@ -1,8 +1,8 @@
 <?php
 
-namespace PlanA23\Modules;
+namespace Plana23\Modules;
 
-use PlanA23\Modules\Facades\FilamentModules;
+use Plana23\Modules\Facades\FilamentModules;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 

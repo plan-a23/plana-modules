@@ -1,8 +1,8 @@
 <?php
 
-namespace PlanA23\Modules\Commands;
+namespace Plana23\Modules\Commands;
 
-use PlanA23\Modules\Concerns\GeneratesModularFiles;
+use Plana23\Modules\Concerns\GeneratesModularFiles;
 use Illuminate\Console\GeneratorCommand;
 
 class ModuleMakeFilamentClusterCommand extends GeneratorCommand

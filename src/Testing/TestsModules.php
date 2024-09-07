@@ -1,6 +1,6 @@
 <?php
 
-namespace Coolsam\Modules\Testing;
+namespace Plana23\Modules\Testing;
 
 use Livewire\Features\SupportTesting\Testable;
 

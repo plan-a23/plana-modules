@@ -1,9 +1,9 @@
 <?php
 
-namespace PlanA23\Modules;
+namespace Plana23\Modules;
 
-use PlanA23\Modules\Facades\FilamentModules;
-use PlanA23\Modules\Testing\TestsModules;
+use Plana23\Modules\Facades\FilamentModules;
+use Plana23\Modules\Testing\TestsModules;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;

@@ -44,7 +44,7 @@ If you are using Laravel 10 please use [version 3.x](https://github.com/savannab
 You can install the package via composer:
 
 ```bash
-composer require plan-a23/modules
+composer require plana23/modules
 ```
 
 This will automatically install `nwidart/laravel-modules: ^11` as well. Make sure you go through
@@ -90,7 +90,7 @@ In order to achieve this, you need to register the `ModulesPlugin` in your panel
 ```php
 // e.g. in App\Providers\Filament\AdminPanelProvider.php
  
-use plan-a23\Modules\ModulesPlugin;
+use Plana23\Modules\ModulesPlugin;
 public function panel(Panel $panel): Panel
 {
     return $panel

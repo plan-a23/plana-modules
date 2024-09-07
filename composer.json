@@ -1,5 +1,5 @@
 {
-  "name": "plan-a23/modules",
+  "name": "plana23/modules",
   "description": "Organize your Plan A Code into modules using nwidart/laravel-modules",
   "keywords": [
     "Plan A",
@@ -46,13 +46,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Plan-a23\\Modules\\": "src/",
-      "Plan-a23\\Modules\\Database\\Factories\\": "database/factories/"
+      "PlanA23\\Modules\\": "src/",
+      "PlanA23\\Modules\\Database\\Factories\\": "database/factories/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Plan-a23\\Modules\\Tests\\": "tests/"
+      "PlanA23\\Modules\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -89,7 +89,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Plan-a23\\Modules\\ModulesServiceProvider"
+        "PlanA23\\Modules\\ModulesServiceProvider"
       ],
       "aliases": {
         "PlanaModules": "PlanaModules"

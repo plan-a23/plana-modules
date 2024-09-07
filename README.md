@@ -159,7 +159,7 @@ php artisan module:make:Plana-page
 
 Follow the interactive prompts to create a new page in your module.
 
-###Creating a new widget
+### Creating a new widget
 
 ```bash
 php artisan module:make:Plana-widget
